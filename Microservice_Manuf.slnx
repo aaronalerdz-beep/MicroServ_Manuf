@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/CQRS-ES/">
+    <Project Path="src/CQRS-ES/CQRS.Core/CQRS.Core.csproj" />
+  </Folder>
+  <Folder Name="/src/MES-Cycle/" />
+  <Folder Name="/src/MES-Cycle/Cycle.Cmd/">
+    <Project Path="src/MES-Cycle/Cycle.Cmd/Cycle.CMD.API/Cycle.CMD.API.csproj" />
+    <Project Path="src/MES-Cycle/Cycle.Cmd/Cycle.CMD.DOMAIN/Cycle.CMD.DOMAIN.csproj" />
+    <Project Path="src/MES-Cycle/Cycle.Cmd/Cycle.CMD.INFRASTRUCTURE/Cycle.CMD.INFRASTRUCTURE.csproj" />
+    <Project Path="src/MES-Cycle/Cycle.Query/Cycle.QUERY.API/Cycle.QUERY.API.csproj" />
+    <Project Path="src/MES-Cycle/Cycle.Query/Cycle.QUERY.DOMAIN/Cycle.QUERY.DOMAIN.csproj" />
+    <Project Path="src/MES-Cycle/Cycle.Query/Cycle.QUERY.INFRASTRUCTURE/Cycle.QUERY.INFRASTRUCTURE.csproj" />
+  </Folder>
+  <Folder Name="/src/MES-Cycle/Cycle.Common/">
+    <Project Path="src/MES-Cycle/Cycle.Common/Cycle.COMMON.csproj" />
+  </Folder>
+</Solution>

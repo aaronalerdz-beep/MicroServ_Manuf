@@ -1,0 +1,30 @@
+# .NET Build artifacts
+**/bin/
+**/obj/
+
+# IDE / Editor folders
+.vscode/
+.idea/
+.vs/
+.cursor/
+
+# Docker & Temp
+**/docker-compose.override.yml
+**/temp/
+**/*.log
+
+# Dependencies
+**/node_modules/
+**/packages/
+
+# Environment secrets
+**/*.env
+**/*.json.user
+
+# Git
+.git/
+
+# Large data files
+**/*.csv
+**/*.sql
+**/*.json
