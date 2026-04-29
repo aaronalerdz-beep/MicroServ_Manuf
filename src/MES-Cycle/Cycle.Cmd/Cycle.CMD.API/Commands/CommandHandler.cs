@@ -14,7 +14,7 @@
         }
         public async Task HandlesAsync(NewCycleCommand command)
         {
-            var aggregate = new CycleAggregate(command.Id, command.parts_per_cycle, command.finished, command.machineConfigurationId, command.productionOrderId);
+            var aggregate = new CycleAggregate(command.Id, command.parts_per_cycle, command.finished, command.machineConfigId, command.productionOrderId);
             await _eventSourcingHandler.SaveAsync(aggregate);
         }
 public async Task HandlesAsync(MachineConfigCommand command)

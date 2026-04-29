@@ -13,10 +13,9 @@ namespace Cycle.QUERY.DOMAIN.Entities
         public int Finished { get; set; }
         public int ProductionOrderId { get; set; }
 
-        public Guid MachineConfigId { get; set; }
-
-        [ForeignKey(nameof(MachineConfigId))]
-        public virtual MachineConfigEntity MachineConfig { get; set; } = null!;
+        // Comes from CycleCreatedEvent.machineConfigId (int).
+        // This is an external identifier, not the FK to our local MachineConfig projection.
+        public string? MachineConfigId { get; set; }
     }
 
     

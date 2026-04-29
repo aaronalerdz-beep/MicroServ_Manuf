@@ -39,17 +39,13 @@ namespace Cycle.QUERY.INFRASTRUCTURE.Repositories
         public async Task<CycleEntity> GetByIdAsync(Guid cycleid)
         {
             using DatabaseContext context = _contextFactory.CreateDbContext();
-            return await context.Cycles
-                    .Include(i => i.MachineConfig)
-                    .FirstOrDefaultAsync(x => x.CycleId == cycleid);
+            return await context.Cycles.FirstOrDefaultAsync(x => x.CycleId == cycleid);
         }
 
         public async Task<List<CycleEntity>> ListAllAsync()
         {
             using DatabaseContext context = _contextFactory.CreateDbContext();
-            return await context.Cycles.AsNoTracking()
-                    .Include(i => i.MachineConfig).AsNoTracking()
-                    .ToListAsync();
+            return await context.Cycles.AsNoTracking().ToListAsync();
         }
 
         public async Task UpdateAsync(CycleEntity cycle)

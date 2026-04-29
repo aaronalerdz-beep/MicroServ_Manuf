@@ -15,6 +15,8 @@ using MES_Cycle.CMD.INFRASTRUCTURE.Handlers;
 using MES_Cycle.CMD.INFRASTRUCTURE.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+
+MongoEventClassMaps.Register();
 builder.Services.Configure<MongoDBConfig>(builder.Configuration.GetSection(nameof(MongoDBConfig)));
 builder.Services.Configure<ProducerConfig>(builder.Configuration.GetSection(nameof(ProducerConfig)));
 builder.Services.AddScoped<IEventStoreRepository, EventStoreRepository>();

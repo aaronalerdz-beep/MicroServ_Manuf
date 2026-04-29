@@ -15,9 +15,6 @@ public class MachineConfigEntity
     public int Cycle_duration { get; set; }
     public string? Operator_name { get; set; }
     public int MachineIdSeq { get; set; }
-
-    [System.Text.Json.Serialization.JsonIgnore]
-    public virtual ICollection<CycleEntity> Cycles { get; set; } = new HashSet<CycleEntity>();
 }
         
 }

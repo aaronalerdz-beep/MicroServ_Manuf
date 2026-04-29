@@ -23,7 +23,7 @@ namespace Cycle.QUERY.INFRASTRUCTURE.Handler
                 Parts_per_cycle = @event.parts_per_cycle,
                 Finished = @event.finished,
                 ProductionOrderId = @event.productionOrderId,
-                MachineConfigId = @event.machineConfigurationId
+                MachineConfigId = @event.machineConfigId
             };
 
             await _cycleRepository.CreateAsync(cycle);

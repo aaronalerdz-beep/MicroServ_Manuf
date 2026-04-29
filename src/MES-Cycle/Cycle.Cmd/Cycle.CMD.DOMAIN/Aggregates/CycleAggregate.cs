@@ -12,13 +12,12 @@ public sealed class CycleAggregate : AggregateRoot
 
     public int PartsPerCycle { get; private set; }
     public int Finished { get; private set; }
-    public int MachineConfigurationId { get; private set; }
+    public string MachineConfigId { get; private set; }
     public int ProductionOrderId { get; private set; }
 
     public int Pressure { get; private set; }
     public int Grit { get; private set; }
     public int CycleDuration { get; private set; }
-    // Inicializado para evitar el warning CS8618
     public string? OperatorName { get; private set; } 
     public int MachineIdSeq { get; private set; }
 
@@ -26,7 +25,7 @@ public sealed class CycleAggregate : AggregateRoot
     {
     }
 
-    public CycleAggregate(Guid id, int partsPerCycle, int finished, int machineConfigurationId, int productionOrderId)
+    public CycleAggregate(Guid id, int partsPerCycle, int finished, string machineConfigId, int productionOrderId)
     {
         if (id == Guid.Empty) throw new ArgumentException("Id cannot be empty.", nameof(id));
                 
@@ -35,7 +34,7 @@ public sealed class CycleAggregate : AggregateRoot
             Id = id,
             parts_per_cycle = partsPerCycle,
             finished = finished,
-            machineConfigurationId = machineConfigurationId,
+            machineConfigId = machineConfigId,
             productionOrderId = productionOrderId
         });
     }
@@ -59,7 +58,7 @@ public sealed class CycleAggregate : AggregateRoot
         _id = @event.Id;
         PartsPerCycle = @event.parts_per_cycle;
         Finished = @event.finished;
-        MachineConfigurationId = @event.machineConfigurationId;
+        MachineConfigId = @event.machineConfigId;
         ProductionOrderId = @event.productionOrderId;
         _active = true;
     }
