@@ -58,6 +58,8 @@ obj/Debug/net8.0/
  Cycle.QUERY.API.AssemblyInfo.cs
  Cycle.QUERY.API.GlobalUsings.g.cs
 Program.cs
+Services/WebNotificationService.cs
+SignalR/NotificationHub.cs
 
 [metadataReferences]
 ../../
@@ -345,7 +347,7 @@ Program.cs
  castle.core/5.1.1/lib/net6.0/Castle.Core.dll
  confluent.kafka/2.14.0/lib/net8.0/Confluent.Kafka.dll
  dnsclient/1.6.1/lib/net5.0/DnsClient.dll
- microsoft.bcl.asyncinterfaces/1.1.1/ref/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll
+ microsoft.bcl.asyncinterfaces/6.0.0/lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll
  microsoft.data.sqlclient/5.1.6/ref/net6.0/Microsoft.Data.SqlClient.dll
  microsoft.entityframeworkcore.abstractions/8.0.11/lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
  microsoft.entityframeworkcore.proxies/8.0.11/lib/net8.0/Microsoft.EntityFrameworkCore.Proxies.dll
@@ -432,6 +434,9 @@ Program.cs
  Microsoft.CodeAnalysis.NetAnalyzers.dll
 <NUGET>/
  awssdk.securitytoken/3.7.100.14/analyzers/dotnet/cs/AWSSDK.SecurityToken.CodeAnalysis.dll
+ microsoft.codeanalysis.analyzers/3.3.3/analyzers/dotnet/cs/
+  Microsoft.CodeAnalysis.Analyzers.dll
+  Microsoft.CodeAnalysis.CSharp.Analyzers.dll
  microsoft.entityframeworkcore.analyzers/8.0.11/analyzers/dotnet/cs/Microsoft.EntityFrameworkCore.Analyzers.dll
  microsoft.extensions.logging.abstractions/9.0.0/analyzers/dotnet/roslyn4.4/cs/Microsoft.Extensions.Logging.Generators.dll
  microsoft.extensions.options/9.0.0/analyzers/dotnet/roslyn4.4/cs/Microsoft.Extensions.Options.SourceGeneration.dll

@@ -2,7 +2,10 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Confluent.Kafka;
 using CQRS.Core.Consumers;
+using Cycle.QUERY.API.Services;
+using Cycle.QUERY.API.SignalR;
 using Cycle.QUERY.DOMAIN.repository;
+using Cycle.QUERY.DOMAIN.Services;
 using Cycle.QUERY.INFRASTRUCTURE.DataAccess;
 using Cycle.QUERY.INFRASTRUCTURE.Handler;
 using Cycle.QUERY.INFRASTRUCTURE.Repositories;
@@ -29,6 +32,7 @@ if (builder.Environment.IsDevelopment() &&
 dataContext.Database.EnsureCreated();
 
 builder.Services.AddScoped<ICycleRepository, CycleRepository>();
+builder.Services.AddScoped<IWebNotificationService, WebNotificationService>();
 builder.Services.AddScoped<IMachineConfigRepository, MachineConfigRepository>();
 builder.Services.AddScoped<IEventHandler, Cycle.QUERY.INFRASTRUCTURE.Handler.EventHandler>();
 builder.Services.AddScoped<IEventConsumer, EventConsumer>();
@@ -42,12 +46,20 @@ builder.Services.AddHostedService<ConsumerHostedService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSignalR();
 
-
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular", policy =>
+    {
+        policy.WithOrigins("https://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
+});
 
 var app = builder.Build();
-
 
 if (app.Environment.IsDevelopment())
 {
@@ -56,8 +68,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("AllowAngular"); 
 app.UseAuthorization();
 app.MapControllers();
+
+app.MapHub<NotificationHub>("/hub/dashboardHub"); 
 
 app.Run();
 

@@ -47,6 +47,23 @@ namespace Cycle.QUERY.INFRASTRUCTURE.Repositories
             using DatabaseContext context = _contextFactory.CreateDbContext();
             return await context.Cycles.AsNoTracking().ToListAsync();
         }
+    public async Task<DashboardStatsDto> GetTodayDashboardStatsAsync()
+    {
+        using DatabaseContext context = _contextFactory.CreateDbContext();
+        
+        var today = DateTime.Today;
+
+        var todayCycles = context.Cycles
+            .AsNoTracking()
+            .Where(c => c.CreatedAt >= today);
+
+        return new DashboardStatsDto
+        {
+            TotalCyclesToday = await todayCycles.CountAsync(),
+            TotalPartsToday = await todayCycles.SumAsync(c => c.Parts_per_cycle),
+        };
+    }
+        
 
         public async Task UpdateAsync(CycleEntity cycle)
         {

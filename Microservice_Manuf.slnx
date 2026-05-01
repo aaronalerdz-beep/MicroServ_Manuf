@@ -8,6 +8,8 @@
     <Project Path="src/MES-Cycle/Cycle.Cmd/Cycle.CMD.API/Cycle.CMD.API.csproj" />
     <Project Path="src/MES-Cycle/Cycle.Cmd/Cycle.CMD.DOMAIN/Cycle.CMD.DOMAIN.csproj" />
     <Project Path="src/MES-Cycle/Cycle.Cmd/Cycle.CMD.INFRASTRUCTURE/Cycle.CMD.INFRASTRUCTURE.csproj" />
+  </Folder>
+  <Folder Name="/src/MES-Cycle/Cycle.Query/">
     <Project Path="src/MES-Cycle/Cycle.Query/Cycle.QUERY.API/Cycle.QUERY.API.csproj" />
     <Project Path="src/MES-Cycle/Cycle.Query/Cycle.QUERY.DOMAIN/Cycle.QUERY.DOMAIN.csproj" />
     <Project Path="src/MES-Cycle/Cycle.Query/Cycle.QUERY.INFRASTRUCTURE/Cycle.QUERY.INFRASTRUCTURE.csproj" />

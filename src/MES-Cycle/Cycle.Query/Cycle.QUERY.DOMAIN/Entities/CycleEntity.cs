@@ -12,6 +12,8 @@ namespace Cycle.QUERY.DOMAIN.Entities
         public int Parts_per_cycle { get; set; }
         public int Finished { get; set; }
         public int ProductionOrderId { get; set; }
+        
+        public DateTime CreatedAt {get; set;}
 
         // Comes from CycleCreatedEvent.machineConfigId (int).
         // This is an external identifier, not the FK to our local MachineConfig projection.

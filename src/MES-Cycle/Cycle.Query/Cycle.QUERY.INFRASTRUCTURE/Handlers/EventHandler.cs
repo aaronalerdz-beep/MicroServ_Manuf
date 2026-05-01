@@ -1,6 +1,7 @@
 using Cycle.Common.Events;
 using Cycle.QUERY.DOMAIN.Entities;
 using Cycle.QUERY.DOMAIN.repository;
+using Cycle.QUERY.DOMAIN.Services;
 
 namespace Cycle.QUERY.INFRASTRUCTURE.Handler
 {
@@ -8,11 +9,15 @@ namespace Cycle.QUERY.INFRASTRUCTURE.Handler
     {
         private readonly ICycleRepository _cycleRepository;
         private readonly IMachineConfigRepository _machineConfigRepository;
+        private readonly IWebNotificationService _notificationService;
 
-        public EventHandler(ICycleRepository postRepository, IMachineConfigRepository machineConfigRepository)
+        public EventHandler(ICycleRepository postRepository,
+                            IWebNotificationService notificationService,
+                             IMachineConfigRepository machineConfigRepository)
         {
             _cycleRepository = postRepository;
             _machineConfigRepository = machineConfigRepository;
+            _notificationService = notificationService;
             
         }
         public async Task On(CycleCreatedEvent @event)
@@ -23,10 +28,16 @@ namespace Cycle.QUERY.INFRASTRUCTURE.Handler
                 Parts_per_cycle = @event.parts_per_cycle,
                 Finished = @event.finished,
                 ProductionOrderId = @event.productionOrderId,
-                MachineConfigId = @event.machineConfigId
+                MachineConfigId = @event.machineConfigId,
+                CreatedAt = DateTime.Now
             };
 
             await _cycleRepository.CreateAsync(cycle);
+            var listCucle = _cycleRepository.ListAllAsync();
+
+
+            var stats = await _cycleRepository.GetTodayDashboardStatsAsync();
+            await _notificationService.SendUpdateAsync(stats);
         }
 
         public async Task On(MachineConfEvent @event)
@@ -43,6 +54,7 @@ namespace Cycle.QUERY.INFRASTRUCTURE.Handler
             };
 
             await _machineConfigRepository.CreateAsync(mConfig);
+            //await _notificationService.SendUpdateAsync(@event);
         }
     }
 }

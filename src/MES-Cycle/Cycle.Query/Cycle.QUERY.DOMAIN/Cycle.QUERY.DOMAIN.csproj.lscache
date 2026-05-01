@@ -53,6 +53,7 @@ TemporaryDependencyNodeTargetIdentifier=net8.0
 /warnaserror+:NU1605,SYSLIB0011
 
 [sourceFiles]
+DTOs/DashboardStatsDto.cs
 Entities/
  CycleEntity.cs
  MachineConfigEntity.cs
@@ -63,6 +64,7 @@ obj/Debug/net8.0/
 Repositories/
  ICycleRepository.cs
  IMachineConfigRepository.cs
+Services/IWebNotificationService.cs
 
 [metadataReferences]
 ../../
