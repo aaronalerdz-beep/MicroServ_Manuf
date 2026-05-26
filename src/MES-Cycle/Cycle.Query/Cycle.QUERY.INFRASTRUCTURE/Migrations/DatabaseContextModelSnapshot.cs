@@ -72,6 +72,11 @@ namespace MES_Cycle.QUERY.INFRASTRUCTURE.Migrations
                     b.Property<int>("Pressure")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("timeConig")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
                     b.HasKey("MachineConfigId");
 
                     b.ToTable("MachineConfig");

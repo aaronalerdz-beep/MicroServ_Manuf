@@ -43,6 +43,24 @@ namespace Cycle.QUERY.INFRASTRUCTURE.Repositories
        
         }
 
+        public async Task<List<HourlyPressureDto>> GetTodayHourlyPressureAsync()
+        {
+            using DatabaseContext context = _contextFactory.CreateDbContext();
+
+            var todayUtc = DateTime.UtcNow.Date;
+
+            return await context.MachineConfigs
+                .Where(x => x.TimeConfig >= todayUtc)
+                .GroupBy(x => x.TimeConfig.Hour)
+                .Select(group => new HourlyPressureDto
+                {
+                    Hour = group.Key, 
+                    AveragePressure = Math.Round(group.Average(x => x.Pressure), 2)
+                })
+                .OrderBy(dto => dto.Hour)
+                .ToListAsync();
+        }
+
         public Task<List<MachineConfigEntity>> ListAllAsync()
         {
             throw new NotImplementedException();
@@ -55,5 +73,13 @@ namespace Cycle.QUERY.INFRASTRUCTURE.Repositories
 
             _ = await context.SaveChangesAsync();
         }
+
+
+
+    
+    }
+
+    internal class FromQueryAttribute : Attribute
+    {
     }
 }

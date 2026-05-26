@@ -15,8 +15,6 @@ namespace Cycle.QUERY.DOMAIN.Entities
         
         public DateTime CreatedAt {get; set;}
 
-        // Comes from CycleCreatedEvent.machineConfigId (int).
-        // This is an external identifier, not the FK to our local MachineConfig projection.
         public string? MachineConfigId { get; set; }
     }
 

@@ -13,9 +13,10 @@ namespace Cycle.QUERY.API.Services
             _hubContext = hubContext;
         }
 
-        public async Task SendUpdateAsync(object data)
+        public async Task SendUpdateAsync(string subject, object data)
         {
-            await _hubContext.Clients.All.SendAsync("ReceiveCycleUpdate", data);
+            await _hubContext.Clients.All.SendAsync(subject, data);
         }
+
     }
 }

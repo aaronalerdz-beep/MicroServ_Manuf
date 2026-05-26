@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MES_Cycle.QUERY.INFRASTRUCTURE.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20260430224414_AddCreatedAtToCycle")]
-    partial class AddCreatedAtToCycle
+    [Migration("20260522223051_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,6 +74,11 @@ namespace MES_Cycle.QUERY.INFRASTRUCTURE.Migrations
 
                     b.Property<int>("Pressure")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("timeConig")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.HasKey("MachineConfigId");
 

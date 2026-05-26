@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MES_Cycle.QUERY.INFRASTRUCTURE.Migrations
 {
     /// <inheritdoc />
-    public partial class AddCreatedAtToCycle : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -36,6 +36,7 @@ namespace MES_Cycle.QUERY.INFRASTRUCTURE.Migrations
                     Grit = table.Column<int>(type: "int", nullable: false),
                     Cycle_duration = table.Column<int>(type: "int", nullable: false),
                     Operator_name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    timeConig = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
                     MachineIdSeq = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

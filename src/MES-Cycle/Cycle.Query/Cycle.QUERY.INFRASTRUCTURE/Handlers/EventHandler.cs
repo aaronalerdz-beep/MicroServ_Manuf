@@ -33,11 +33,8 @@ namespace Cycle.QUERY.INFRASTRUCTURE.Handler
             };
 
             await _cycleRepository.CreateAsync(cycle);
-            var listCucle = _cycleRepository.ListAllAsync();
-
-
             var stats = await _cycleRepository.GetTodayDashboardStatsAsync();
-            await _notificationService.SendUpdateAsync(stats);
+            await _notificationService.SendUpdateAsync( "ReceiveCycleUpdate", stats);
         }
 
         public async Task On(MachineConfEvent @event)
@@ -49,12 +46,12 @@ namespace Cycle.QUERY.INFRASTRUCTURE.Handler
                 Grit = @event.grit,
                 Cycle_duration = @event.cycle_duration,
                 Operator_name = @event.operator_name,
-                MachineIdSeq = @event.machineIdSeq
-
+                MachineIdSeq = @event.machineIdSeq,
+                TimeConfig = DateTime.UtcNow
             };
-
             await _machineConfigRepository.CreateAsync(mConfig);
-            //await _notificationService.SendUpdateAsync(@event);
+            var hourlyPressureData = await _machineConfigRepository.GetTodayHourlyPressureAsync();
+            await _notificationService.SendUpdateAsync("ReceiveMachineUpdate", hourlyPressureData);
         }
     }
 }

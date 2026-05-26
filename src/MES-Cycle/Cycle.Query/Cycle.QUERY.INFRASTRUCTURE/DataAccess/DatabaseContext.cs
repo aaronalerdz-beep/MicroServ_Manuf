@@ -12,5 +12,6 @@ namespace Cycle.QUERY.INFRASTRUCTURE.DataAccess
 
         public DbSet<CycleEntity> Cycles { get; set; }
         public DbSet<MachineConfigEntity> MachineConfigs { get; set; }
+
     }
 }

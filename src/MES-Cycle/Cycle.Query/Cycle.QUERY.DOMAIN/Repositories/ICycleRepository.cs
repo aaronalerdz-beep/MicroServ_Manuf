@@ -7,7 +7,7 @@ namespace Cycle.QUERY.DOMAIN.repository
         Task CreateAsync(CycleEntity cycle);
         Task UpdateAsync(CycleEntity cycle);
 
-        Task<DashboardStatsDto> GetTodayDashboardStatsAsync();
+        Task<List<DashboardStatsDto>> GetTodayDashboardStatsAsync();
         Task DeleteAsync(Guid cycleid);
         Task<CycleEntity> GetByIdAsync(Guid cycleid);
         Task<List<CycleEntity>> ListAllAsync();

@@ -10,5 +10,6 @@ namespace Cycle.QUERY.DOMAIN.repository
         Task DeleteAsync(Guid machineConfigId);
         Task<MachineConfigEntity> GetByIdAsync(Guid machineConfigId);
         Task<List<MachineConfigEntity>> ListAllAsync();
+        Task<List<HourlyPressureDto>> GetTodayHourlyPressureAsync();
     }
 }

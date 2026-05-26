@@ -14,6 +14,7 @@ public class MachineConfigEntity
     public int Grit { get; set; }
     public int Cycle_duration { get; set; }
     public string? Operator_name { get; set; }
+    public DateTime TimeConfig {get ; set;} 
     public int MachineIdSeq { get; set; }
 }
         
